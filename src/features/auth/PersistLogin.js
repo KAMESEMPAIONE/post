@@ -20,9 +20,11 @@ export const PersistLogin = () => {
             console.log('persist login')
             console.log(persist)
             console.log(process.env.NODE_ENV)
+            console.log("token before",token)
             const verifyRefreshToken = async () => {
                 try {
-                    await refresh().unwrap()
+                    const refToken = await refresh().unwrap()
+                    console.log(refToken)
                     setTrueSuccess(true)
                 } catch (err) {
                     console.error(err)
@@ -31,7 +33,7 @@ export const PersistLogin = () => {
 
             if (!token && persist) verifyRefreshToken()
         }
-
+        console.log("token after",token)
         return () => effectRan.current = true
         // eslint-disable-next-line
     }, [])
