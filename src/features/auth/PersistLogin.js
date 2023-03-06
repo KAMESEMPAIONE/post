@@ -23,7 +23,7 @@ export const PersistLogin = () => {
             console.log("token before",token)
             const verifyRefreshToken = async () => {
                 try {
-                    const refToken = await refresh().unwrap()
+                    const refToken = await refresh()
                     console.log(refToken)
                     setTrueSuccess(true)
                 } catch (err) {
