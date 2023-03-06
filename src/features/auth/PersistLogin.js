@@ -17,6 +17,9 @@ export const PersistLogin = () => {
 
     useEffect(() => {
         if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
+            console.log('persist login')
+            console.log(persist)
+            console.log(process.env.NODE_ENV)
             const verifyRefreshToken = async () => {
                 try {
                     await refresh().unwrap()

@@ -56,6 +56,7 @@ const Post = () => {
 
         try {
             await addComment({id: postId, body: comment}).unwrap()
+            setComment('')
         } catch (err) {
             console.log(err)
         }
