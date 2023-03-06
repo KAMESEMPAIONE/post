@@ -3,6 +3,7 @@ import {logOut, setCredentials} from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: "https://posts-api-qvua.onrender.com",
+    // baseUrl: "http://localhost:8080",
     credentials: "include",
     prepareHeaders: (headers, {getState}) => {
         const token = getState().auth.token

@@ -16,6 +16,9 @@ const authSlice = createSlice({
                 state.user = action.payload.user
                 state.roles = action.payload.roles
                 state.token = action.payload.token
+                console.log('reducer')
+                console.log(action.payload.user)
+                console.log('token',action.payload.token)
             },
 
             prepare (token) {
