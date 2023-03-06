@@ -1,0 +1,85 @@
+.Comment {
+  background: #ebebeb;
+  margin-top: 25px;
+  padding: 10px;
+  position: relative;
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__credentials {
+    font-style: italic;
+    display: flex;
+
+    margin-bottom: 10px;
+    word-break: break-word;
+
+    cite {
+      font-size: 15px;
+      font-weight: 600;
+      margin-right: 25px;
+    }
+
+    span {
+      color: #1781ef;
+    }
+  }
+
+  &__edit, &__delete, &__save {
+    position: absolute;
+    cursor: pointer;
+    top: 7px;
+    font-size: 1.35rem;
+  }
+
+  &__save {
+    color: #1781ef;
+    right: 60px;
+  }
+
+  &__edit {
+    right: 35px;
+    color: #1781ef;
+  }
+
+  &__delete {
+    right: 10px;
+  }
+
+
+  &__body {
+    word-break: break-word;
+    line-height: 1.2;
+  }
+
+  &__textarea {
+    height: 60px;
+    width: 100%;
+    padding: 5px;
+    resize: none;
+    overflow: auto;
+  }
+
+  &__button {
+    margin: 7px auto;
+    padding: 7px 15px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    background: #373940;
+    color: #ebebeb;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Comment {
+    &__credentials {
+      flex-direction: column;
+
+      cite {
+        margin: 0 0 5px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,216 @@
+.Register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__body {
+    padding: 25px 60px;
+    background: #ebebeb;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__input {
+    padding: 10px;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    background: #373940;
+    border-radius: 7px;
+    color: #fff;
+
+    &:focus {
+      box-shadow: 1px 3px 3px #373940;
+    }
+  }
+  ::placeholder {
+    color: #b9afaf;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    padding-left: 40px;
+    position:  relative;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  &__check {
+    &::before {
+      content: '';
+      width: 30px;
+      height: 15px;
+      border-radius:20px;
+      background: #bfc0c4;
+      position: absolute;
+      top: 2px;
+      left: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      border-radius:50%;
+      top: 1px;
+      left: -2px;
+      background: #bfc0c4;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+      transition: 300ms linear;
+    }
+
+    &.active::before {
+      background: #61dafb;
+    }
+
+    &.active::after {
+      background: #61dafb;
+      left: 16px;
+    }
+  }
+
+  &__button {
+    margin: 22px auto;
+    padding: 7px 15px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background: #373940;
+    color: #ebebeb;
+    box-shadow: 0 5px 0 black;
+    position: relative;
+    top: 0;
+    transition: 150ms;
+    letter-spacing: 1px;
+
+    &:hover {
+      top: 2px;
+      box-shadow: 0 3px 0 black;
+    }
+  }
+
+  &__button[disabled] {
+    background: gray;
+    &:hover {
+      top: 0;
+      box-shadow: 0 5px 0 black;
+    }
+  }
+
+  &__msg {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    text-align: center;
+    a {
+      display: inline-block;
+      background-color: #bbeffd;
+      border-bottom: 2px solid #1a1a1a;
+      padding: 3px;
+      color: #1a1a1a;
+      margin-left: 7px;
+      &:visited {
+        color: #1a1a1a;
+      }
+    }
+  }
+}
+
+.Register-complete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:20vh;
+
+  div {
+    background: #ebebeb;
+    text-align: center;
+    padding: 45px 75px;
+  }
+  h1 {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+  p {
+    margin: 15px 0;
+    font-size: 1.3rem;
+  }
+
+  a {
+    display: inline-block;
+    background-color: #bbeffd;
+    border-bottom: 2px solid #1a1a1a;
+    padding: 7px;
+    color: #1a1a1a;
+    margin-left: 7px;
+    font-size: 1.3rem;
+  }
+}
+
+.offscreen {
+  position: absolute;
+  visibility: hidden;
+}
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  top: -10px;
+  left: 0;
+  width: 97%;
+  text-align: center;
+}
+.errmsg {
+  background: #fdbbcf;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  position: absolute;
+  top: -7%;
+  left: 0;
+  overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 768px) {
+  .Register {
+    &__body {
+      padding: 15px 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Register {
+    height: 90vh;
+    &__body {
+      width: 100%;
+      height: 100vh;
+      padding: 50px 10px 0;
+    }
+  }
+  .instructions {
+    width: 74%;
+    font-size: 0.9rem;
+  }
+}
