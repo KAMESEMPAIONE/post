@@ -17,10 +17,6 @@ export const PersistLogin = () => {
 
     useEffect(() => {
         if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
-            console.log('persist login')
-            console.log(persist)
-            console.log(process.env.NODE_ENV)
-            console.log("token before",token)
             const verifyRefreshToken = async () => {
                 try {
                     const refToken = await refresh()
@@ -33,7 +29,7 @@ export const PersistLogin = () => {
 
             if (!token && persist) verifyRefreshToken()
         }
-        console.log("token after",token)
+
         return () => effectRan.current = true
         // eslint-disable-next-line
     }, [])
