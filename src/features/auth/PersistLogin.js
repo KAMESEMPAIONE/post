@@ -19,8 +19,7 @@ export const PersistLogin = () => {
         if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
             const verifyRefreshToken = async () => {
                 try {
-                    const refToken = await refresh()
-                    console.log(refToken)
+                    await refresh()
                     setTrueSuccess(true)
                 } catch (err) {
                     console.error(err)
