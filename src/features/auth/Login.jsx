@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useLoginMutation } from "./authApiSlice"
 import { setCredentials } from "./authSlice"
 import { usePersist } from "../../hooks/usePersist"
+import ReCAPTCHA  from "react-google-recaptcha"
 import "./Login.scss"
 
 
@@ -12,6 +13,7 @@ export const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [captcha, setCaptcha] = useState('')
 
     const [errMsg, setErrMsg] = useState('')
     const [persist, setPersist] = usePersist()
@@ -25,6 +27,10 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if(captcha.length === 0) {
+            setErrMsg('Pass the captcha')
+            return
+        }
         if (!username || !password) {
             setErrMsg('Invalid Entry')
             return
@@ -49,6 +55,10 @@ export const Login = () => {
                 setErrMsg('Failed')
             }
         }
+    }
+
+    const onCaptchaChange = (value) => {
+        setCaptcha(value)
     }
 
     const errClass = errMsg ? 'errmsg' : 'offscreen'
@@ -78,6 +88,12 @@ export const Login = () => {
                         placeholder="Password"
                     />
 
+                    <ReCAPTCHA
+                        className = "g-recaptcha"
+                        sitekey={process.env.REACT_APP_reCAPTCHA_KEY}
+                        onChange={onCaptchaChange}
+                    />
+
                     <label className={`Login__label Login__check ${persist ? 'active' : ''}`}>
                         <input
                             className="Login__checkbox"
@@ -88,7 +104,7 @@ export const Login = () => {
                         Trust This Device
                     </label>
 
-                    <button className="Login__button" disabled={!username || !password}>Sign In</button>
+                    <button className="Login__button" disabled={!username || !password || !captcha}>Sign In</button>
                 </form>
                 <p className="Login__msg">
                     Don't have an account yet? <br/>

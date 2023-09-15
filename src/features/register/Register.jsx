@@ -1,6 +1,7 @@
 import { useRegisterMutation } from "./registerApiSlice"
 import { Link } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
+import ReCAPTCHA  from "react-google-recaptcha"
 import "./Register.scss"
 
 const EMAIL_REGEXP = /^\S+@\S+\.\S+$/
@@ -9,7 +10,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,32}$/
 
 export const Register = () => {
     const [register, {isSuccess}] = useRegisterMutation()
-
+    const [captcha, setCaptcha] = useState('')
     const userRef = useRef(null)
 
     const [email, setEmail] = useState('')
@@ -53,6 +54,10 @@ export const Register = () => {
         setErrMsg('')
     }, [email, user, pwd, matchPwd])
 
+    const onCaptchaChange = (value) => {
+        setCaptcha(value)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -63,6 +68,12 @@ export const Register = () => {
             setErrMsg("Invalid Entry")
             return
         }
+
+        if(captcha.length === 0) {
+            setErrMsg('Pass the captcha')
+            return
+        }
+
         try {
             await register({
                 username: user,
@@ -171,6 +182,12 @@ export const Register = () => {
                                 Must match the first password input field
                             </p>
 
+                            <ReCAPTCHA
+                                className = "g-recaptcha"
+                                sitekey={process.env.REACT_APP_reCAPTCHA_KEY}
+                                onChange={onCaptchaChange}
+                            />
+
                             <label className={`Register__label Register__check ${showPwd ? 'active' : ''}`}>
                                 <input
                                     className="Register__checkbox"
@@ -180,7 +197,7 @@ export const Register = () => {
                                 />
                                 Show password
                             </label>
-                            <button className="Register__button" disabled={!validUser || !validEmail || !validPwd || !validMatch}>Submit!</button>
+                            <button className="Register__button" disabled={!validUser || !validEmail || !validPwd || !validMatch || !captcha}>Submit!</button>
                         </form>
 
                         <p className="Register__msg">
