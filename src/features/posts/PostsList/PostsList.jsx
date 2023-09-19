@@ -69,13 +69,20 @@ export const PostsList = ({postByAuthor}) => {
             const created = new Date(post.createdAt).toLocaleString('en-GB')
             const updated = new Date(post.updatedAt).toLocaleString('en-GB')
 
-            const date = post.createdAt === post.updatedAt ?
-                        <time>Created at: {created}</time> :
-                        <time>Updated at: {updated}</time>
+            const date = post.createdAt === post.updatedAt
+                ? <time>Created at: {created}</time>
+                : <time>Updated at: {updated}</time>
 
-            const postContent = post.body.length > 200 ?
-                    `${post.body.slice(0, 200)}...` :
-                     post.body
+
+            let postContent = post.body.length > 250
+                ? post.body.slice(0, 250) + '...'
+                : post.body
+
+            if(postContent.includes(`<img`)) {
+                const imgIndex = postContent.indexOf('<img')
+                const imgLastIndex = post.body.indexOf('>', imgIndex)
+                postContent = post.body.slice(0, imgLastIndex + 1)
+            }
 
             return (
                 <article key={post.id} className="PostsList__post">
@@ -97,7 +104,8 @@ export const PostsList = ({postByAuthor}) => {
                     }
 
 
-                    <p className="PostsList__body">{postContent}</p>
+                    <div dangerouslySetInnerHTML={{__html: postContent}} className="PostsList__body">
+                    </div>
 
                     <div className="PostsList__cred">
                         <cite>Author: {post.authorName}</cite>

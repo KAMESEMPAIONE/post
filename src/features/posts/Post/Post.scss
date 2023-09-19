@@ -5,6 +5,7 @@
   align-items: center;
   margin-top: 50px;
   padding: 0 10px;
+
   &__content {
     width: 800px;
     position: relative;
@@ -35,11 +36,69 @@
   }
 
   &__body {
-    white-space: pre-wrap;
-    font-size: 1.3rem;
+    text-align: justify;
+    font-size: 1.4rem;
     line-height: 1.4;
-    margin: 20px 0 30px;
+    margin: 30px 0 30px;
     word-break: break-word;
+
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-size: 1.75rem;
+    }
+    h3 {
+      font-size: 1.7rem;
+    }
+    h4 {
+      font-size: 1.6rem;
+    }
+
+    & > p {
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 10px solid #ccc;
+      margin: 18px 0;
+      padding: 10px 15px;
+    }
+
+    figcaption {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.3rem;
+    }
+
+    ol, ul {
+      margin: 10px 0 10px 30px;
+      & li {
+        padding: 5px 0;
+      }
+    }
+
+    a {
+      color: #1781ef;
+      border-bottom: 2px solid #1781ef;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto 10px;
+      max-width: 500px;
+      max-height: 500px;
+    }
+
+    center {
+      margin: 10px 0;
+    }
   }
 
   &__cred {
@@ -136,6 +195,13 @@
     &__comments {
       max-width: 600px;
     }
+
+    &__body {
+      img {
+        max-width: 400px;
+        max-height: 400px;
+      }
+    }
   }
 }
 
@@ -147,7 +213,19 @@
 
       &__title {
         max-width: 80%;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
+      }
+
+      &__body {
+        h1 {
+          font-size: 1.6rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+        h3,h4,h5,h6 {
+          font-size: 1.4rem;
+        }
       }
 
       &__comments {
@@ -160,6 +238,14 @@
   .Post {
     &__content {
       max-width: 300px;
+    }
+
+    &__body {
+      font-size: 1.25rem;
+      img {
+        max-width: 250px;
+        max-height: 250px;
+      }
     }
 
     &__comments {
@@ -189,6 +275,24 @@
   .Post {
     &__content {
       max-width: 270px;
+    }
+
+    &__body {
+      font-size: 1.2rem;
+      img {
+        max-width: 220px;
+        max-height: 220px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+      h3,h4,h5,h6 {
+        font-size: 1.25rem;
+      }
     }
 
     &__title {

@@ -15,7 +15,7 @@
   }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
     line-height: 1.2;
     word-break: break-word;
@@ -50,10 +50,61 @@
   }
 
   &__body {
+    text-align: justify;
     margin: 20px 0;
     font-size: 1.2rem;
     line-height: 1.3;
     word-break: break-word;
+
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 1.3rem;
+    }
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    & > p {
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 10px solid #ccc;
+      margin: 10px 0;
+      padding: 10px 15px;
+    }
+
+    figcaption {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.3rem;
+    }
+
+    ol, ul {
+      margin: 10px 0 10px 30px;
+      & li {
+        padding: 5px 0;
+      }
+    }
+
+    a {
+      color: #1781ef;
+      border-bottom: 2px solid #1781ef;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto 10px;
+      max-width: 500px;
+      max-height: 500px;
+    }
+
+    center {
+      margin: 10px 0;
+    }
   }
 
   &__cred {
@@ -81,10 +132,33 @@
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .PostsList {
+    &__body {
+      img {
+        max-width: 400px;
+        max-height: 400px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 768px){
   .PostsList {
     &__post {
-      width: 450px;
+      max-width: 450px;
+    }
+
+    &__body {
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      h3,h4,h5,h6 {
+        font-size: 1.3rem;
+      }
     }
 
     &__cred {
@@ -117,6 +191,24 @@
     &__title {
       font-size: 1.4rem;
     }
+
+    &__body {
+      font-size: 1.25rem;
+      img {
+        max-width: 250px;
+        max-height: 250px;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+      h3,h4,h5,h6 {
+        font-size: 1.2rem;
+      }
+    }
   }
 }
 
@@ -124,6 +216,13 @@
   .PostsList {
     &__post {
       width: 240px;
+    }
+
+    &__body {
+      img {
+        max-width: 220px;
+        max-height: 220px;
+      }
     }
   }
 

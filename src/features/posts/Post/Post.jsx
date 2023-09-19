@@ -39,7 +39,6 @@ const Post = () => {
         try {
             if (window.confirm('Delete this post?')) {
                 await deletePost({postId}).unwrap()
-                alert('Success post deleted!')
                 navigate('/posts')
             }
         } catch (err) {
@@ -106,7 +105,7 @@ const Post = () => {
         return (
             <article className="Post">
                 <div className="Post__content">
-                    <h2 className="Post__title">{post.title}</h2>
+                    <h1 className="Post__title">{post.title}</h1>
 
                     { permissionToUpdate &&
                         <Link to={`/posts/${post.id}/edit`} className="Post__edit">
@@ -121,7 +120,9 @@ const Post = () => {
                         />
                     }
 
-                    <p className="Post__body">{post.body}</p>
+                    <div dangerouslySetInnerHTML={{__html: post.body}} className="Post__body">
+                        {/*{post.body}*/}
+                    </div>
 
                     <div className="Post__cred">
                         <cite>Author: {post.authorName}</cite>
